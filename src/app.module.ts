@@ -25,6 +25,18 @@ import { CourseModule } from './modules/course/course.module';
       synchronize: true,
       autoLoadEntities: true,
     }),
+    // TypeOrmModule.forRoot({
+    //   type: 'mysql',
+    //   host: 'localhost',
+    //   port: 3306,
+    //   username: 'root',
+    //   password: '123456',
+    //   database: 'question',
+    //   entities: [`${__dirname}/../modules/question/*.entity{.ts,.js}`],
+    //   logging: true,
+    //   synchronize: true,
+    //   autoLoadEntities: true,
+    // }),
     GraphQLModule.forRoot({
       driver: ApolloDriver,
       autoSchemaFile: './schema.gql',
