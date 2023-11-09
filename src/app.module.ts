@@ -10,6 +10,7 @@ import { OSSModule } from './modules/oss/oss.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { StudentModule } from './modules/student/student.module';
 import { CourseModule } from './modules/course/course.module';
+import { QuestionModule } from './modules/question/question.module';
 
 @Module({
   imports: [
@@ -20,7 +21,7 @@ import { CourseModule } from './modules/course/course.module';
       username: 'root',
       password: '123456',
       database: 'water-drop',
-      entities: [`${__dirname}/../modules/**/*.entity{.ts,.js}`],
+      entities: [`${__dirname}/../modules/*.entity{.ts,.js}`],
       logging: true,
       synchronize: true,
       autoLoadEntities: true,
@@ -41,6 +42,7 @@ import { CourseModule } from './modules/course/course.module';
       driver: ApolloDriver,
       autoSchemaFile: './schema.gql',
     }),
+    QuestionModule,
     UserModule,
     OSSModule,
     AuthModule,
