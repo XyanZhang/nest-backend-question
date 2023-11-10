@@ -42,3 +42,7 @@ export const AppDataSource = new DataSource({
 + createQueryBuilder：创建复杂 sql 语句，比如 join 多个 Entity 的查询
 + transaction：包裹一层事务的 sql
 + getRepository：拿到对单个 Entity 操作的类，方法同 EntityManager
+
+## cascade 
+
+cascade 不是数据库的那个级联，而是告诉 typeorm 当你增删改一个 Entity 的时候，是否级联增删改它关联的 Entity

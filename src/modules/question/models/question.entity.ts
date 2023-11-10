@@ -1,9 +1,14 @@
 import { CommonEntity } from '@/common/entities/common.entity';
-import { Column, Entity } from 'typeorm';
+import { Column, Entity, ManyToOne, OneToMany } from 'typeorm';
+import { Questionnaire } from './questionnaire.entity';
+import { Option } from './option.entity';
 
-/**
- * 组件
- */
+enum QuestionType {
+  SINGLE_CHOICE = 1,
+  MULTIPLE_CHOICE = 2,
+  TRUE_FALSE = 3,
+  SHORT_ANSWER = 4
+}
 @Entity('question')
 export class Question extends CommonEntity {
   @Column({
@@ -12,13 +17,23 @@ export class Question extends CommonEntity {
   })
   title: string;
   @Column({
-    comment: '分类',
+    comment: '分类', // 问题分类
     default: '',
   })
   category: string;
+
   @Column({
-    comment: '类型',
-    default: '',
+    comment: '类型', // 单选 多选 判断 简答
+    default: QuestionType.SINGLE_CHOICE
   })
-  type: string;
+  type: number;
+
+  @ManyToOne(() => Questionnaire, questionnaire => {
+    return questionnaire.questions
+  })
+  questionnaire: Questionnaire;
+
+  // @OneToMany(() => Option, option => option.question)
+  // options: Option[]; 
+
 }

@@ -1,5 +1,6 @@
 import { CommonEntity } from '@/common/entities/common.entity';
-import { Column, Entity } from 'typeorm';
+import { Column, Entity, ManyToMany, ManyToOne } from 'typeorm';
+import { Questionnaire } from './questionnaire.entity';
 
 /**
  * 组件
@@ -12,13 +13,12 @@ export class Answer extends CommonEntity {
   })
   user: string;
   @Column({
-    comment: '问卷',
-    default: '',
-  })
-  questionnaire: string;
-  @Column({
     comment: '答案',
     default: '',
   })
   answers: string;
+
+  @ManyToOne(() => Questionnaire)
+  questionnaire: Questionnaire
+
 }

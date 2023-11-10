@@ -9,7 +9,7 @@ import { Option } from './models/Option.entity';
 import { Answer } from './models/answer.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Question, Questionnaire, Option, Answer])],
+  imports: [TypeOrmModule.forFeature([Questionnaire, Question, Option, Answer])],
   providers: [QuestionService],
   exports: [QuestionService],
 })

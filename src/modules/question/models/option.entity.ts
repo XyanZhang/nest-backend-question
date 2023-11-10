@@ -1,6 +1,6 @@
 import { CommonEntity } from '@/common/entities/common.entity';
-import { Column, Entity } from 'typeorm';
-
+import { Column, Entity, JoinColumn, JoinTable, ManyToOne } from 'typeorm';
+import { Question } from './question.entity';
 /**
  * 组件
  */
@@ -10,5 +10,13 @@ export class Option extends CommonEntity {
     comment: '选项内容',
     default: '',
   })
-  title: string;
+  optionContent: string;
+
+  @JoinColumn({
+    name: 'cur_question'
+  })
+  
+  @ManyToOne(() => Question)
+  question: Question;
+
 }

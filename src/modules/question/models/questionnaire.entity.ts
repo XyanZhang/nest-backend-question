@@ -1,9 +1,9 @@
 import { CommonEntity } from '@/common/entities/common.entity';
-import { Column, Entity } from 'typeorm';
+import { Column, Entity, ManyToOne, OneToMany, ManyToMany, JoinTable } from 'typeorm';
+import { Answer } from './answer.entity';
+import { Question } from './question.entity';
 
-/**
- * 组件
- */
+
 @Entity('questionnaire')
 export class Questionnaire extends CommonEntity {
   @Column({
@@ -19,16 +19,16 @@ export class Questionnaire extends CommonEntity {
   desp: string;
 
   @Column({
-    comment: '创建人',
+    comment: '分类',
     nullable: true,
   })
-  creater: string;
-  @Column({
-    comment: '问题Id',
+  category: string;
+
+  @OneToMany(() => Question, (question: Question) => question.questionnaire, {
+    cascade: true
   })
-  questionId: string;
-  @Column({
-    comment: '选项',
-  })
-  options: string;
+  questions: Question[];
+
+  @OneToMany(() => Answer, (answer: Answer) => answer.questionnaire)
+  answers: Answer;
 }
