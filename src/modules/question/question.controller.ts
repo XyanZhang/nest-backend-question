@@ -1,4 +1,4 @@
-import { Controller, Get, Req } from '@nestjs/common';
+import { Controller, Get, Query, Req } from '@nestjs/common';
 import { QuestionService } from './question.service';
 import { Request } from 'express';
 
@@ -8,11 +8,13 @@ export class QuestionController {
 
   @Get('/create')
   async create(@Req() request: Request): Promise<boolean> {
-    console.log(request)
-    return true;
-    // return await this.questionService.create({
-
-    // });
+    // TODO: 增加 DTO 校验
+    let res = await this.questionService.create({
+      title: request.query.title as string,
+      category: request.query.category as string,
+      // type: request.query.type,
+    });
+    return  res
   }
 
 }
