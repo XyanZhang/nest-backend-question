@@ -11,7 +11,6 @@ import { AuthModule } from './modules/auth/auth.module';
 import { StudentModule } from './modules/student/student.module';
 import { CourseModule } from './modules/course/course.module';
 import { QuestionModule } from './modules/question/question.module';
-import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -50,7 +49,6 @@ import { UsersModule } from './users/users.module';
     StudentModule,
     OrganizationModule,
     CourseModule,
-    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
