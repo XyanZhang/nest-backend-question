@@ -46,3 +46,7 @@ export const AppDataSource = new DataSource({
 ## cascade 
 
 cascade 不是数据库的那个级联，而是告诉 typeorm 当你增删改一个 Entity 的时候，是否级联增删改它关联的 Entity
+
+## JoinTable
+
+多对一和一对多的关系，通常不需要显示地创建中间表。这是因为通过使用外键来建立关联，数据库会自动在关系中创建必要的列， JoinTable 一般用在多对多创建中间表

@@ -27,9 +27,6 @@ export class Questionnaire extends CommonEntity {
   @OneToMany(() => Question, (question: Question) => question.questionnaire, {
     cascade: true
   })
-  @JoinTable({
-    name: 'questionnaire_question'
-  })
   questions: Question[];
 
   @OneToMany(() => Answer, (answer: Answer) => answer.questionnaire)
