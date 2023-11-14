@@ -1,5 +1,5 @@
 import { CommonEntity } from '@/common/entities/common.entity';
-import { Column, Entity, ManyToOne, OneToMany } from 'typeorm';
+import { Column, Entity, JoinTable, ManyToMany, ManyToOne, OneToMany } from 'typeorm';
 import { Questionnaire } from './questionnaire.entity';
 import { Option } from './option.entity';
 
@@ -33,7 +33,8 @@ export class Question extends CommonEntity {
   })
   questionnaire: Questionnaire;
 
-  // @OneToMany(() => Option, option => option.question)
-  // options: Option[]; 
+  // @JoinTable()
+  // @ManyToMany(() => Option)
+  options: Option[]; 
 
 }
